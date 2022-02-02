@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+	</head>
+
+	<body>
+    <main>
+     <article>
+        <h1>CSS Topic - Borders</h1>
+        <p>Clipping a background to text is not supported in all browsers, but I'll show you how to do it below on most modern browsers using some special CSS properties that use <em>vendor prefixes</em>.</p>
+        <h2>Choose a background</h2>
+        <p>In order for text to clip to a background, it needs a background – a background color or an image. Since a plain background color would be the same as a <code>color</code> setting, I chose a gradient from <a href="https://uigradients.com/">UI gradients</a>, a website that auto-generates CSS for gradients. The gradient is named <a href="https://uigradients.com/#KingYna">King Yna</a>.  Below is a paragraph with the background set to the gradient, and width and height set to make the paragraph visible.</p>
+
+        <p data-height="383" data-theme-id="8210" data-slug-hash="NLVEZy" data-default-tab="result" data-user="lsburton" data-pen-title="gradient background" class="codepen">See the Pen <a href="https://codepen.io/lsburton/pen/NLVEZy/">gradient background</a> by Lara (<a href="https://codepen.io/lsburton">@lsburton</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+
+        <h2>Choose a color</h2>
+        <p>Next, I choose some text. I am using <a href="https://fonts.google.com/specimen/Notable">Google's Notable font</a> in this example. Because I wanted the gradient to be the width of the text, I set the class to <code>display: inline-block</code> as a quick way to make the bounding box the same width of the text (by default, paragraph width is 100% of its bounding box, which, in this case, would be the entire screen). Since a few browsers do not support any form of background clipping on text, I set the text color to a fallback color.</p>
+
+        <p data-height="395" data-theme-id="dark" data-slug-hash="vzwvOg" data-default-tab="result" data-user="lsburton" data-pen-title="gradient with text" class="codepen">See the Pen <a href="https://codepen.io/lsburton/pen/vzwvOg/">gradient with text</a> by Lara (<a href="https://codepen.io/lsburton">@lsburton</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+
+        <h2>Background clip!</h2>
+        <p>Now comes the magic. CSS has a <code>background-clip: text</code> property, but it's still experimental. Some browsers don't support it (Firefox and Edge do, however, but don't even think about it working on Internet Explorer).</p>
+        <p>For Chrome and Safari browsers, you need to use what are called <em>vendor prefixes</em>. Adding <code>-webkit-background-clip: text</code> as a fallback below <code>background-clip: text</code> will enable background text clipping on Chrome and Safari and a few other lesser-used browsers. (Chrome, Safari, and those few other browsers use a rending engine called <em>webkit</em> which becomes the vendor prefix).</p>
+        <p>We need one more step. The browsers that support <code>background-clip: text</code> will clip the background to the text and the background will become the text fill. The webkit browsers have a strange quirk where the font color will override the background. To fix this, but still keep the font color for non-webkit browser that don't support <code>background-clip: text</code>, I use another vendor prefix property <code>-webkit-text-fill-color: transparent</code> that will make the text transparent only on webkit browsers.</p>
+
+        <p data-height="423" data-theme-id="dark" data-slug-hash="VGOqxW" data-default-tab="css,result" data-user="lsburton" data-pen-title="background-clip" class="codepen">See the Pen <a href="https://codepen.io/lsburton/pen/VGOqxW/">background-clip</a> by Lara (<a href="https://codepen.io/lsburton">@lsburton</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+      </article> 
+    </main>
+    
+    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+	</body>
+</html>
